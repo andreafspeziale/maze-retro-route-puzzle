@@ -1,0 +1,30 @@
+{
+  "name": "retro-puzzle",
+  "version": "0.1.0",
+  "bin": {
+    "retro-puzzle-cli": "bin/retro-puzzle-cli.js"
+  },
+  "description": "retro puzzle cli",
+  "main": "index.js",
+  "author": "andreafspeziale",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb-base": "^13.2.0",
+    "eslint-plugin-import": "^2.18.2",
+    "mocha": "^6.2.0",
+    "rosie": "^2.0.1",
+    "sinon": "^7.5.0"
+  },
+  "dependencies": {
+    "@hapi/joi": "^16.1.8",
+    "bunyan": "^1.8.12",
+    "node-dijkstra": "^2.5.0",
+    "yargs": "^15.0.2"
+  },
+  "scripts": {
+    "test:unit": "mocha -r test/helper.js $(find src -name '*.spec.js')"
+  }
+}
