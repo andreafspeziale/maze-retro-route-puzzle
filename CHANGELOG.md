@@ -6,6 +6,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased](https://github.com/eidoo/hybrid-exchange-sdk/compare/v0.1.0...HEAD)
 
+### Add
+
+- Add `sanitizeLineBreaks` to `sanitizer` util [#1](https://github.com/andreafspeziale/maze-retro-route-puzzle/issues/1).
+
+### Change
+
+- Change `resolve` command output format [#1](https://github.com/andreafspeziale/maze-retro-route-puzzle/issues/1).
+
 ## [v0.1.0](https://github.com/eidoo/hybrid-exchange-sdk/compare/fe254ad...v0.1.0)
 
 - Initial release.
