@@ -12,6 +12,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Add `sanitizeLineBreaks` to `sanitizer` util [#1](https://github.com/andreafspeziale/maze-retro-route-puzzle/issues/1).
 
+- Add `Circle CI` in order to run the tests at each commit and publish a new image at each new tag/release [#3](https://github.com/andreafspeziale/maze-retro-route-puzzle/issues/3).
+
 ### Change
 
 - Change `resolve` command output format [#1](https://github.com/andreafspeziale/maze-retro-route-puzzle/issues/1).
