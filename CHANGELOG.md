@@ -6,13 +6,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased](https://github.com/eidoo/hybrid-exchange-sdk/compare/v0.2.0...HEAD)
 
+### Add
+
+- Add `Circle CI` in order to run the tests at each commit and publish a new image at each new tag/release [#3](https://github.com/andreafspeziale/maze-retro-route-puzzle/issues/3).
+
 ## [v0.2.0](https://github.com/eidoo/hybrid-exchange-sdk/compare/v0.1.0...v0.2.0)
 
 ### Add
 
 - Add `sanitizeLineBreaks` to `sanitizer` util [#1](https://github.com/andreafspeziale/maze-retro-route-puzzle/issues/1).
-
-- Add `Circle CI` in order to run the tests at each commit and publish a new image at each new tag/release [#3](https://github.com/andreafspeziale/maze-retro-route-puzzle/issues/3).
 
 ### Change
 
