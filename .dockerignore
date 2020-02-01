@@ -1,1 +1,11 @@
+.git
+.github
+docs
 node_modules
+.dockerignore
+.eslintrc.js
+.gitignore
+CHANGELOG.md
+Dockerfile
+package-lock.json
+README.md

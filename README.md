@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/andreafspeziale/maze-retro-route-puzzle.svg?style=svg)](https://circleci.com/gh/andreafspeziale/maze-retro-route-puzzle)
+
 # A-Maze-ingly retro route puzzle
 It outputs a puzzle path in order to collect all the given items from a given puzzle and starting point.
 

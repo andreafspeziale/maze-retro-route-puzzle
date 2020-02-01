@@ -2,8 +2,7 @@ FROM node:12-alpine
 
 WORKDIR /retro-puzzle-cli
 
-COPY ./package.json .
-COPY ./package-lock.json .
+COPY . .
 
 RUN apk update \
     && apk --no-cache --virtual build-dependencies add \
@@ -11,7 +10,5 @@ RUN apk update \
     make \
     && npm install --loglevel=error \
     && apk del build-dependencies
-
-COPY . .
 
 ENTRYPOINT ["node", "bin/retro-puzzle-cli.js"]
