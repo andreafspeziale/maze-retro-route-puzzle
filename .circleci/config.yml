@@ -1,0 +1,77 @@
+version: 2.1
+
+jobs:
+  test:
+    docker:
+      - image: circleci/node:12.0.0
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - $CIRCLE_BRANCH-dependencies-{{ checksum "package.json" }}
+      - run: npm install
+      - save_cache:
+          paths:
+            - node_modules
+          key: $CIRCLE_BRANCH-dependencies-{{ checksum "package.json" }}
+      - run: npm run test:unit
+
+  test-image:
+    machine: true
+    steps:
+      - checkout
+      - run:
+          name: Docker build
+          command: docker build -t $DOCKER_IMAGE:latest .
+      - run:
+          name: Run tests
+          command: docker container run --name cli --rm --entrypoint npm $DOCKER_IMAGE:latest run test:unit
+      - run:
+          name: Persist build
+          command: |
+            mkdir -p docker-cache
+            docker save -o docker-cache/built-image.tar $DOCKER_IMAGE:latest
+      - save_cache:
+          key: $DOCKER_IMAGE:latest
+          paths:
+            - docker-cache
+
+  publish:
+    machine: true
+    steps:
+      - restore_cache:
+          key: $DOCKER_IMAGE:latest
+      - run:
+          name: Docker tag with git release tag
+          command: |
+            docker load < docker-cache/built-image.tar
+            docker tag $DOCKER_IMAGE:latest $DOCKER_IMAGE:$CIRCLE_TAG
+      - run:
+          name: Push latest tagged image
+          command: |
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker push $DOCKER_IMAGE:$CIRCLE_TAG
+
+workflows:
+  version: 2.1
+  test:
+    jobs:
+      - test
+  test-and-publish-image:
+    jobs:
+      - test-image:
+          context: maze-retro-route-puzzle
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^v[0-9]+(\.[0-9]+)*$/
+      - publish:
+          requires:
+            - test-image
+          context: maze-retro-route-puzzle
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^v[0-9]+(\.[0-9]+)*$/
